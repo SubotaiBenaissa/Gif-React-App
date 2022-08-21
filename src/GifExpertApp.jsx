@@ -5,28 +5,27 @@ import { GifGrid } from './components/GifGrid';
 
 export const GifExpertApp = () => {
 
-  const [categories, setCategories] = useState([ 'One Piece' ]);
-  
-  const onAddCategory = (newCategory) => {
-    if( categories.includes(newCategory)) return;
-    console.log(newCategory);
-    setCategories([newCategory, ...categories]);
-  }
+    const [categories, setCategories] = useState([ 'One Piece' ]);
+    
+    const onAddCategory = (newCategory) => {
+      if( categories.includes(newCategory)) return;
+      setCategories([newCategory, ...categories]);
+    }
 
-  return (
-    <>
-      <h1>GifExpertApp</h1>
+    return (
+      <>
+        <h1>GifExpertApp</h1>
 
-      <AddCategory 
-        //setCategories={ setCategories }
-        onNewCategory={ onAddCategory }
-      /> 
+        <AddCategory 
+          //setCategories={ setCategories }
+          onNewCategory={ onAddCategory }
+        /> 
 
-      {categories.map( (category) => (
-        <GifGrid key={ category } category={ category }/>
-      ))}
+        {categories.map( (category) => (
+          <GifGrid key={ category } category={ category }/>
+        ))}
 
-    </>
-  );
+      </>
+    );
 
 }
