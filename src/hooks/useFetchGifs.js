@@ -2,14 +2,16 @@ import { useEffect, useState } from "react";
 
 import { getGifs } from '../helpers/getGifs';
 
-export const useFetchGifs = (category) => {
+export const useFetchGifs = ( category ) => {   // Por alguna razón que no entiendo debo mandar la prop category sin des-estructurar porque no es lo mismo xd 
 
     const [images, setImages] = useState([]);
+    const [isLoading, setIsLoading] = useState( true );
 
     const getImages = async() => {
-        const newImages = await getGifs(category);
+        const newImages = await getGifs( category );
         setImages(newImages);
-        console.log(category)
+        setIsLoading(false);
+        // console.log(category)
     }
 
     useEffect( () => { 
@@ -18,7 +20,7 @@ export const useFetchGifs = (category) => {
 
     return {
         images,
-        isLoading: true
+        isLoading
     }
 
 }

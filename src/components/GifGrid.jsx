@@ -18,7 +18,7 @@ export const GifGrid = ({ category }) => {
         getImages();
     }, [])*/  //Esto lo hago en un hook personalizado
 
-    const { images, isLoading } = useFetchGifs(category);
+    const { images, isLoading } = useFetchGifs( category ); // Si lo mando des estructurado se rompe xd
    
     return (
         <>
