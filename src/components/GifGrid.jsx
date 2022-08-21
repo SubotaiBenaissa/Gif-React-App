@@ -1,6 +1,8 @@
 import React from 'react';
-import { getGifs } from '../helpers/getGifs';
 import { useEffect, useState } from 'react';
+
+import { GifItem } from './GifItem';
+import { getGifs } from '../helpers/getGifs';
 
 export const GifGrid = ({ category }) => {
 
@@ -20,20 +22,24 @@ export const GifGrid = ({ category }) => {
         
             <h3>{ category }</h3>
 
-            <ol >
+            <div className='card-grid'>
             {
                 /*images.map( (img) => (
                         <li key={img.id}>
                             {img.title}
                         </li>
                 ))*/
-                images.map( ({ id, title }) => (
-                    <li key={ id }>
-                        { title }
-                    </li>
+
+                /*images.map( ({ id, title, url }) => (
+                    <GifItem key={ id } title={ title } url={ url }/>
+                ))*/
+
+                images.map( (imgs) => (
+                    <GifItem key={imgs.id} {...imgs}/>  
+                    // Se usa el operador spread para mandar los atributos del array images directamente, ya que este contiene a title y url
                 ))
             }
-            </ol>
+            </div>
         </>
     )
 
